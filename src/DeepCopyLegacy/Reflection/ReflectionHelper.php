@@ -67,10 +67,6 @@ class ReflectionHelper
             return self::getProperty($parentClass->getName(), $name);
         }
 
-        echo PHP_EOL;
-        echo __NAMESPACE__;
-        echo PHP_EOL;
-
         throw new PropertyException(
             sprintf(
                 'The class "%s" doesn\'t have a property with the given name: "%s".',
