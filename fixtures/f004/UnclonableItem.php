@@ -1,6 +1,6 @@
 <?php
 
-namespace DeepCopy\f004;
+namespace Belime\DeepCopyLegacy\f004;
 
 use BadMethodCallException;
 

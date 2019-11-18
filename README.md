@@ -45,7 +45,7 @@ composer require myclabs/deep-copy
 Use simply:
 
 ```php
-use DeepCopy\DeepCopy;
+use Belime\DeepCopyLegacy\DeepCopy;
 
 $copier = new DeepCopy();
 $myCopy = $copier->copy($myObject);
@@ -103,7 +103,7 @@ $copy = deep_copy($var);
 Alternatively, you can create your own `DeepCopy` instance to configure it differently for example:
 
 ```php
-use DeepCopy\DeepCopy;
+use Belime\DeepCopyLegacy\DeepCopy;
 
 $copier = new DeepCopy(true);
 
@@ -115,7 +115,7 @@ You may want to roll your own deep copy function:
 ```php
 namespace Acme;
 
-use DeepCopy\DeepCopy;
+use Belime\DeepCopyLegacy\DeepCopy;
 
 function deep_copy($var)
 {
@@ -152,7 +152,7 @@ We provide some generic filters and matchers.
 The `PropertyNameMatcher` will match a property by its name:
 
 ```php
-use DeepCopy\Matcher\PropertyNameMatcher;
+use Belime\DeepCopyLegacy\Matcher\PropertyNameMatcher;
 
 // Will apply a filter to any property of any objects named "id"
 $matcher = new PropertyNameMatcher('id');
@@ -164,7 +164,7 @@ $matcher = new PropertyNameMatcher('id');
 The `PropertyMatcher` will match a specific property of a specific class:
 
 ```php
-use DeepCopy\Matcher\PropertyMatcher;
+use Belime\DeepCopyLegacy\Matcher\PropertyMatcher;
 
 // Will apply a filter to the property "id" of any objects of the class "MyClass"
 $matcher = new PropertyMatcher('MyClass', 'id');
@@ -177,7 +177,7 @@ The `TypeMatcher` will match any element by its type (instance of a class or any
 [gettype()](http://php.net/manual/en/function.gettype.php) function):
 
 ```php
-use DeepCopy\TypeMatcher\TypeMatcher;
+use Belime\DeepCopyLegacy\TypeMatcher\TypeMatcher;
 
 // Will apply a filter to any object that is an instance of Doctrine\Common\Collections\Collection
 $matcher = new TypeMatcher('Doctrine\Common\Collections\Collection');
@@ -196,9 +196,9 @@ Let's say for example that you are copying a database record (or a Doctrine enti
 any ID:
 
 ```php
-use DeepCopy\DeepCopy;
-use DeepCopy\Filter\SetNullFilter;
-use DeepCopy\Matcher\PropertyNameMatcher;
+use Belime\DeepCopyLegacy\DeepCopy;
+use Belime\DeepCopyLegacy\Filter\SetNullFilter;
+use Belime\DeepCopyLegacy\Matcher\PropertyNameMatcher;
 
 $object = MyClass::load(123);
 echo $object->id; // 123
@@ -217,9 +217,9 @@ echo $copy->id; // null
 If you want a property to remain untouched (for example, an association to an object):
 
 ```php
-use DeepCopy\DeepCopy;
-use DeepCopy\Filter\KeepFilter;
-use DeepCopy\Matcher\PropertyMatcher;
+use Belime\DeepCopyLegacy\DeepCopy;
+use Belime\DeepCopyLegacy\Filter\KeepFilter;
+use Belime\DeepCopyLegacy\Matcher\PropertyMatcher;
 
 $copier = new DeepCopy();
 $copier->addFilter(new KeepFilter(), new PropertyMatcher('MyClass', 'category'));
@@ -234,9 +234,9 @@ $copy = $copier->copy($object);
 If you use Doctrine and want to copy an entity, you will need to use the `DoctrineCollectionFilter`:
 
 ```php
-use DeepCopy\DeepCopy;
-use DeepCopy\Filter\Doctrine\DoctrineCollectionFilter;
-use DeepCopy\Matcher\PropertyTypeMatcher;
+use Belime\DeepCopyLegacy\DeepCopy;
+use Belime\DeepCopyLegacy\Filter\Doctrine\DoctrineCollectionFilter;
+use Belime\DeepCopyLegacy\Matcher\PropertyTypeMatcher;
 
 $copier = new DeepCopy();
 $copier->addFilter(new DoctrineCollectionFilter(), new PropertyTypeMatcher('Doctrine\Common\Collections\Collection'));
@@ -251,9 +251,9 @@ If you use Doctrine and want to copy an entity who contains a `Collection` that 
 `DoctrineEmptyCollectionFilter`
 
 ```php
-use DeepCopy\DeepCopy;
-use DeepCopy\Filter\Doctrine\DoctrineEmptyCollectionFilter;
-use DeepCopy\Matcher\PropertyMatcher;
+use Belime\DeepCopyLegacy\DeepCopy;
+use Belime\DeepCopyLegacy\Filter\Doctrine\DoctrineEmptyCollectionFilter;
+use Belime\DeepCopyLegacy\Matcher\PropertyMatcher;
 
 $copier = new DeepCopy();
 $copier->addFilter(new DoctrineEmptyCollectionFilter(), new PropertyMatcher('MyClass', 'myProperty'));
@@ -273,9 +273,9 @@ You can use the `DoctrineProxyFilter` to load the actual entity behind the Doctr
 before other filters are applied!**
 
 ```php
-use DeepCopy\DeepCopy;
-use DeepCopy\Filter\Doctrine\DoctrineProxyFilter;
-use DeepCopy\Matcher\Doctrine\DoctrineProxyMatcher;
+use Belime\DeepCopyLegacy\DeepCopy;
+use Belime\DeepCopyLegacy\Filter\Doctrine\DoctrineProxyFilter;
+use Belime\DeepCopyLegacy\Matcher\Doctrine\DoctrineProxyMatcher;
 
 $copier = new DeepCopy();
 $copier->addFilter(new DoctrineProxyFilter(), new DoctrineProxyMatcher());
@@ -291,9 +291,9 @@ $copy = $copier->copy($object);
 1. If you want to replace the value of a property:
 
 ```php
-use DeepCopy\DeepCopy;
-use DeepCopy\Filter\ReplaceFilter;
-use DeepCopy\Matcher\PropertyMatcher;
+use Belime\DeepCopyLegacy\DeepCopy;
+use Belime\DeepCopyLegacy\Filter\ReplaceFilter;
+use Belime\DeepCopyLegacy\Matcher\PropertyMatcher;
 
 $copier = new DeepCopy();
 $callback = function ($currentValue) {
@@ -309,9 +309,9 @@ $copy = $copier->copy($object);
 2. If you want to replace whole element:
 
 ```php
-use DeepCopy\DeepCopy;
-use DeepCopy\TypeFilter\ReplaceFilter;
-use DeepCopy\TypeMatcher\TypeMatcher;
+use Belime\DeepCopyLegacy\DeepCopy;
+use Belime\DeepCopyLegacy\TypeFilter\ReplaceFilter;
+use Belime\DeepCopyLegacy\TypeMatcher\TypeMatcher;
 
 $copier = new DeepCopy();
 $callback = function (MyClass $myClass) {
@@ -333,9 +333,9 @@ The `$callback` parameter of the `ReplaceFilter` constructor accepts any PHP cal
 Stop *DeepCopy* from recursively copying element, using standard `clone` instead:
 
 ```php
-use DeepCopy\DeepCopy;
-use DeepCopy\TypeFilter\ShallowCopyFilter;
-use DeepCopy\TypeMatcher\TypeMatcher;
+use Belime\DeepCopyLegacy\DeepCopy;
+use Belime\DeepCopyLegacy\TypeFilter\ShallowCopyFilter;
+use Belime\DeepCopyLegacy\TypeMatcher\TypeMatcher;
 use Mockery as m;
 
 $this->deepCopy = new DeepCopy();

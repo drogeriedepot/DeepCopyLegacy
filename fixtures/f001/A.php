@@ -1,6 +1,6 @@
 <?php
 
-namespace DeepCopy\f001;
+namespace Belime\DeepCopyLegacy\f001;
 
 class A
 {

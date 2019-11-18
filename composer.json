@@ -7,16 +7,16 @@
 
     "autoload": {
         "psr-4": {
-            "DeepCopy\\": "src/DeepCopy/"
+            "Belime\\DeepCopyLegacy\\": "src/DeepCopyLegacy/"
         },
         "files": [
-            "src/DeepCopy/deep_copy.php"
+            "src/DeepCopyLegacy/deep_copy.php"
         ]
     },
     "autoload-dev": {
         "psr-4": {
-            "DeepCopy\\": "fixtures/",
-            "DeepCopyTest\\": "tests/DeepCopyTest/"
+            "Belime\\DeepCopyLegacy\\": "fixtures/",
+            "Belime\\DeepCopyLegacyTest\\": "tests/DeepCopyLegacyTest/"
         }
     },
 

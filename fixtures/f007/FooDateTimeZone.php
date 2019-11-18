@@ -1,6 +1,6 @@
 <?php
 
-namespace DeepCopy\f007;
+namespace Belime\DeepCopyLegacy\f007;
 
 use DateTimeZone;
 
