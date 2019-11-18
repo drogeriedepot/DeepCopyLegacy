@@ -1,7 +1,7 @@
 {
-    "name": "myclabs/deep-copy",
+    "name": "belime/deep-copy-legacy",
     "type": "library",
-    "description": "Create deep copies (clones) of your objects",
+    "description": "PHP 5 kompatibler Fork von myclabs/deep-copy",
     "keywords": ["clone", "copy", "duplicate", "object", "object graph"],
     "license": "MIT",
 
