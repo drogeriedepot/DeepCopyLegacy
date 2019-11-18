@@ -28,8 +28,9 @@
         "doctrine/common": "^2.6",
         "phpunit/phpunit": "^4.1"
     },
-
     "config": {
         "sort-packages": true
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
